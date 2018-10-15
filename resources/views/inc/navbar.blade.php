@@ -7,13 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link {{Request::is('/') ? 'active' : ''}}" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link {{Request::is('about') ? 'active' : ''}}" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">contact</a>
+            <a class="nav-link {{Request::is('contact') ? 'active' : ''}}" href="/contact">contact</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

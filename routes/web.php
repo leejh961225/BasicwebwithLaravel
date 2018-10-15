@@ -13,6 +13,12 @@
 
 //get = is specifying type of request
 // you can also use Route::post
+Route::get('/', 'PagesController@getHome');
+Route::get('/about', 'PagesController@getAbout');
+Route::get('/contact', 'PagesController@getContact');
+
+
+/*
 Route::get('/', function () {
     return view('home');
 });
@@ -25,4 +31,8 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+*/
+Route::get('/messages', 'MessageController@getMessages');
+
 Route::post('/contact/submit', 'MessageController@submit');
+
