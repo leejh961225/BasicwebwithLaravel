@@ -25,4 +25,4 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::post('/conact/submit', 'MessagesController@submit');
+Route::post('/contact/submit', 'MessageController@submit');
