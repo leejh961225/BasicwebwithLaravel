@@ -32,4 +32,7 @@ class MessageController extends Controller
         $messages = Message::all();
         return view('layouts.messages')->with('messages', $messages);
     }
+    public function deleteMessage(){
+        
+    }
 }
