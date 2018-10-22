@@ -31,5 +31,10 @@
 <footer id="footer" class="text-center"> 
     <p>Copyright 2018 &copy; Acme</p>
   </footer>
+
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
 </body>
 </html>

@@ -13,11 +13,14 @@
             <a class="nav-link {{Request::is('about') ? 'active' : ''}}" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{Request::is('contact') ? 'active' : ''}}" href="/contact">contact</a>
+            <a class="nav-link {{Request::is('contact') ? 'active' : ''}}" href="/contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{Request::is('messages') ? 'active' : ''}}" href="/messages">messages</a>
+            <a class="nav-link {{Request::is('messages') ? 'active' : ''}}" href="/messages">Messages</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link {{Request::is('posts') ? 'active' : ''}}" href="/posts">Posts</a>
+            </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
