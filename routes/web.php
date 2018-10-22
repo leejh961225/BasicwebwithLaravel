@@ -18,7 +18,7 @@ Route::get('/about', 'PagesController@getAbout');
 Route::get('/contact', 'PagesController@getContact');
 
 
-/*
+/* 
 Route::get('/', function () {
     return view('home');
 });
@@ -35,4 +35,12 @@ Route::get('/contact', function () {
 Route::get('/messages', 'MessageController@getMessages');
 
 Route::post('/contact/submit', 'MessageController@submit');
+Route::post('/messages/delete', 'MessageController@deleteMessage');
+Route::post('/messages/update', 'MessageController@editMessage');
 
+//Route that uses url value get/post
+/*Route::get('users/{id}/{name}', function ($id, $name) {
+    return 'This is user ' .$name.' with an id of '.$id;
+}); */
+
+Route::resource('posts', 'PostController');
