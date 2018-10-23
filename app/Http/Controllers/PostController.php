@@ -9,6 +9,15 @@ use DB;
 class PostController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['expect' => ['index','show']]);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -54,6 +63,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -81,6 +91,12 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+        //Check for correct author
+        if(auth()->user()->id !== $post->user_id){
+        return redirect('/posts')->with('error','Unauthorized Access');
+        }
+        return view('posts.edit')->with('post',$post);
     }
 
     /**
@@ -93,6 +109,19 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        // Create post
+
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Updated');
     }
 
     /**
@@ -101,8 +130,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        $id = $request->input('postId');
+        $post = Post::find($id);
+
+        //Check for correct author
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error','Unauthorized Access');
+            }
+            
+        $post->delete();
+        return redirect('/posts')->with('success', 'Post Deleted');
     }
 }

@@ -13,7 +13,7 @@
 
 //get = is specifying type of request
 // you can also use Route::post
-Route::get('/', 'PagesController@getHome');
+Route::get('/dashboard', 'PagesController@getHome');
 Route::get('/about', 'PagesController@getAbout');
 Route::get('/contact', 'PagesController@getContact');
 
@@ -44,3 +44,6 @@ Route::post('/messages/update', 'MessageController@editMessage');
 }); */
 
 Route::resource('posts', 'PostController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
