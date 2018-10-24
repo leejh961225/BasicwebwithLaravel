@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ACME') }}</title>
 
     <!-- Scripts -->
 
@@ -132,6 +132,13 @@
       
       } );
         CKEDITOR.replace( 'article-ckeditor' );
+        CKEDITOR.editorConfig = function( config )
+        {
+            // Define changes to default configuration here. For example:
+            // config.language = 'fr';
+            // config.uiColor = '#AADC6E';
+            config.height = '800px';
+        };
         </script>
     </body>
 </html>

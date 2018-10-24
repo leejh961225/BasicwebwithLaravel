@@ -18,7 +18,11 @@
     <hr>
         <h3>Your Blog Posts</h3>
     <br>
-        @if(count($posts) > 0)
+    @if(!isset($posts))
+        <p>You have to posts yet</p>
+    @else
+
+    @if(count($posts) > 0)
     <table class="table table-striped">
         <tr>
             <th>Title</th>
@@ -31,6 +35,7 @@
                 <td><a href="/posts/{{ $post->id }}/edit" class="btn btn-warning">Edit</a></td>
                 <td>
                         {!! Form::open(['action' => ['PostController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right']) !!}
+                        {{ Form::hidden('postId',  $post->id) }} 
                         {{ Form::hidden('_method', 'DELETE') }} 
                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                         {!! Form::close() !!}
@@ -42,6 +47,8 @@
     @else
         <p>You have no posts</p>
     @endif
+    @endif
+       
 
                 </div>
             </div>

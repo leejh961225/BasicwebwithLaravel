@@ -42,32 +42,21 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                               
+                                <a class="dropdown-item {{Request::is('messages') ? 'active' : ''}}" href="/messages">Messages</a>
+                                <a class="dropdown-item {{Request::is('posts') ? 'active' : ''}}" href="/posts">Posts</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                            </a>
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                 {{ __('Logout') }}
+                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                                 @csrf
+                                 </form>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                            </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                          </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::is('messages') ? 'active' : ''}}" href="/messages">Messages</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link {{Request::is('posts') ? 'active' : ''}}" href="/posts">Posts</a>
-                            </li>  
+                        
+                    
                     @endguest
                 </ul>
             </div>

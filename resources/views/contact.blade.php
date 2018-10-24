@@ -20,6 +20,3 @@
   </div>
 {!! Form::close() !!}
 @endsection
-
-@section('sidebar')
-@endsection
