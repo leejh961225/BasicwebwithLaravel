@@ -49,10 +49,13 @@
   <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+  <script src="/js/jquery.transposer.js"></script>
+
   <script>
         $(document).ready(function() {
           $('#Message_table').DataTable();
-    
+          $('#dashboard_tbl').DataTable();
+          $("pre").transpose();
     
           //Delete Post
            $('#Post_Delete_Modal').on('shown.bs.modal', function (e) {

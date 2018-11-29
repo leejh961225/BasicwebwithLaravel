@@ -44,6 +44,7 @@ Route::post('/messages/update', 'MessageController@editMessage');
     return 'This is user ' .$name.' with an id of '.$id;
 }); */
 
+Route::get('posts/create_chord', 'PostController@create_chord');
 Route::resource('posts', 'PostController');
 Auth::routes();
 

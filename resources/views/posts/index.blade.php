@@ -8,7 +8,7 @@
         <a class="text-muted" id="test1" href="#">Subscribe</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
+        <a class="btn btn-sm btn-success" href="/posts/create_chord">Create New Chords</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
        

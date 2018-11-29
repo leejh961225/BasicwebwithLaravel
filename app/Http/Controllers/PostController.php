@@ -44,7 +44,16 @@ class PostController extends Controller
         //
         return view('posts.create');
     }
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create_chord()
+    {
+        //
+        return view('posts.create_chord');
+    }
     /**
      * Store a newly created resource in storage.
      *

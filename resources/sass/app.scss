@@ -18,5 +18,7 @@
 
 //@import url(//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
 @import url(//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css);
+{{ HTML::style('css/jquery.transposer.css') }}
+
 //@import url(//code.jquery.com/jquery-1.12.3.js);
 //@import url(//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js);

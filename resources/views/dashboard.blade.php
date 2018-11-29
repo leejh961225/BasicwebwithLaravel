@@ -23,12 +23,15 @@
     @else
 
     @if(count($posts) > 0)
-    <table class="table table-striped">
+    <table class="table table-striped" id="dashboard_tbl">
+        <thead>
         <tr>
-            <th>Title</th>
+            <th width="25%">Title</th>
             <th></th>
             <th></th>
         </tr>
+        </thead>
+        <tbody>
         @foreach($posts as $post)
         <tr>
                 <td>{{ $post->title }}</td>
@@ -42,7 +45,7 @@
                 </td>
             </tr>
         @endforeach
-         
+    </tbody> 
     </table>
     @else
         <p>You have no posts</p>
