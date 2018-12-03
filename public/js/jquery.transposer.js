@@ -202,9 +202,10 @@
       var keyLinks = [];
       $(keys).each(function(i, key) {
           if (currentKey.name == key.name)
-              keyLinks.push("<a href='#' class='selected'>" + key.name + "</a>");
+          keyLinks.push("<a href='#' class='selected btn btn-primary'>" + key.name + "</a>");
+          //keyLinks.push("<a href='#' class='selected btn btn-primary " + key.value + " '>" + key.name + "</a>");
           else
-              keyLinks.push("<a href='#'>" + key.name + "</a>");
+              keyLinks.push("<a href='#' class='btn btn-default'>" + key.name + "</a>");
       });
 
 
@@ -214,8 +215,8 @@
       $("a", keysHtml).click(function(e) {
           e.preventDefault();
           transposeSong($this, $(this).text());
-          $(".transpose-keys a").removeClass("selected");
-          $(this).addClass("selected");
+          $(".transpose-keys a").removeClass("selected btn-primary");
+          $(this).addClass("selected btn-primary");
           return false;
       });
       

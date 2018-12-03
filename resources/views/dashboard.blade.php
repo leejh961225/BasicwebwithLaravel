@@ -29,6 +29,8 @@
             <th width="25%">Title</th>
             <th></th>
             <th></th>
+            <th></th>
+            <th>작성일</th>
         </tr>
         </thead>
         <tbody>
@@ -43,6 +45,8 @@
                         {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                         {!! Form::close() !!}
                 </td>
+                <td><a href="/posts/{{ $post->id }}" class="btn btn-success">See</a></td>
+                <td>{{ $post->created_at->format('M d Y') }}</td>
             </tr>
         @endforeach
     </tbody> 
