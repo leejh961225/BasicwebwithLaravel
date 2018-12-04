@@ -27,15 +27,19 @@
             @if(Request::is('/'))
             @include('inc.showcase')
             @endif
+            
             <div class="row">
+              <!-- 메세지탭 -->
               <div class="col-md-8 col-lg-8">
               @include('inc.messages')
               @yield('content')
               </div>
-              <div class="col-md-8 col-lg-4">
+
+              <!-- 사이드바 -->
+              <div class="col-md-6 col-lg-4">
               @include('inc.sidebar')
-                </div>
-            </div>
+              </div>
+            </div><!-- end of "row" -->
             
             
           </div>
@@ -58,7 +62,7 @@
         $(document).ready(function() {
           $('#Message_table').DataTable();
           $('#dashboard_tbl').DataTable();
-          $("pre").transpose();
+          $("#chord").transpose();
     
           //Delete Post
            $('#Post_Delete_Modal').on('shown.bs.modal', function (e) {

@@ -14,28 +14,35 @@
                             {{ session('status') }}
                         </div>
                     @endif
-        <a href="/posts/create" class="btn btn-primary"> create post </a> 
-    <hr>
+        <a href="/posts/create" class="btn btn-primary"> Create Post </a> 
+        <a href="/posts/create_chord" class="btn btn-success"> Create Tab </a> 
+
+        <hr>
         <h3>Your Blog Posts</h3>
     <br>
+  
     @if(!isset($posts))
         <p>You have to posts yet</p>
     @else
 
     @if(count($posts) > 0)
+   
     <table class="table table-striped" id="dashboard_tbl">
         <thead>
         <tr>
+            <th></th>
             <th width="25%">Title</th>
             <th></th>
             <th></th>
             <th></th>
             <th>작성일</th>
+            <th>조회</th>
         </tr>
         </thead>
         <tbody>
         @foreach($posts as $post)
-        <tr>
+        <tr> 
+                <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
                 <td><a href="/posts/{{ $post->id }}/edit" class="btn btn-warning">Edit</a></td>
                 <td>
@@ -47,10 +54,12 @@
                 </td>
                 <td><a href="/posts/{{ $post->id }}" class="btn btn-success">See</a></td>
                 <td>{{ $post->created_at->format('M d Y') }}</td>
+                <td>{{ $post->id }}</td>
             </tr>
         @endforeach
     </tbody> 
     </table>
+   
     @else
         <p>You have no posts</p>
     @endif

@@ -59,7 +59,31 @@
           </div>
           <hr>
         @endforeach
-        {{ $posts->links() }}
+       <!-- Laravel pagination. details in PostController.php index function. -->
+        <div class="row flex-nowrap align-items-center">
+         
+          <div class="col-sm-3">  
+            {{ Form::open(array('action' => array('PostController@index'), 'class' => 'pull-right', 'method' => 'GET') ) }}
+            {{ Form::select('search_key', array(
+              '1' => '글제목', 
+              '2' => '글내용',
+              '3' => '글쓴이'
+              ), '1', ['class' => 'form-control'] ) }}
+            </div>   
+            <div class="col-sm-6">  
+              {{ Form::text('search_word', '', ['class' => 'form-control', 'placeholder' => '검색어']) }}
+            
+            </div>
+              {{ Form::submit('검색', ['class' => 'btn btn-default']) }}
+           
+              {{ Form::close() }}
+            </div>
+            <hr>
+            <div class="col-sm">
+                  {{ $posts->links() }} 
+            </div>
+        
+       
   @else
   <p>No Posts found</p>
   @endif

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Request 를 statically 사용하기 위해 위 경로 Request 클래스를 지워야함 
+//use Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use DB;
+
+
 
 class PostController extends Controller
 {
@@ -23,15 +27,34 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+  
+    public function index(Request $request)
     {
         //$posts = Post::where('title','Post Two')->get();
         //$posts = Post::orderBy('title','desc')->take(1)->get();
         //$posts = Post::all();
         //$posts = DB::select('SELECT * FROM posts');
-
+        
+      
+        
+        //$search_word  = Request::get('search_word');
+        //return $search_word;
+        //Cannot use like this, need to be redirected to Request class
+        
+        $search_key = $request->input('search_key');
+        $search_word = $request->input('search_word');
+        
+        if($search_key == 1){
+            //filter by 글제목
+            $posts = Post::where('title', 'LIKE','%' . $search_word . '%')
+            ->orderBy('created_at','desc')
+            ->paginate(5);
+            //return $posts;
+            return view('posts.index')->with('posts',$posts);
+        }else{
         $posts = Post::orderBy('created_at','desc')->paginate(5);
         return view('posts.index')->with('posts', $posts);
+        }
     }
 
     /**
@@ -109,6 +132,10 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         return view('posts.show')->with('post',$post);
+        
+        //return view('posts.show')->with('post',$post); posts.show에서 posts 는 폴더이름 show는 그안에있는 show.blade.php  
+        //->with('post',$post) 에서 'post' 는 show.blade.php 에서 데이터 fetch 하기위한 variable name. $post 는 $id 로 db에서 찾은 array 
+
     }
 
     /**
@@ -162,6 +189,9 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        
+        //Update chord with key data
+        //$post->body = "<pre id='chord' data-key='A'>" . $request->input('body') . "<pre>";
         if($request->hasFile('cover_image')){
             $post->cover_image = $fileNameToStore;
         }
@@ -194,4 +224,7 @@ class PostController extends Controller
         return redirect('/posts')->with('success', 'Post Deleted');
     }
     //CREATE ANOTHER FUNCTION FOR MAIN
+
+    
+
 }
