@@ -20,6 +20,9 @@
                       <li class="nav-item">
                         <a class="nav-link {{Request::is('contact') ? 'active' : ''}}" href="/contact">Contact</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link {{  Request::is('comment') ? 'active' : ''}}" href="/comment">Comment</a>
+                      </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

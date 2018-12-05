@@ -3,6 +3,8 @@
 @section('content')
 </br>
 <a href="/posts" class="">Go back</a>
+
+
 </br><hr>
 <h1>{{ $post->title }}</h1> <hr>
 <div class="col-md-12 col-sm-12">

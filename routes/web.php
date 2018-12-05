@@ -17,7 +17,7 @@ Route::get('/dashboard', 'PagesController@getHome');
 Route::get('/about', 'PagesController@getAbout');
 Route::get('/contact', 'PagesController@getContact');
 Route::get('/', 'PagesController@getHome');
-
+Route::get('/comment', 'PagesController@getComment');
 
 /* 
 Route::get('/', function () {

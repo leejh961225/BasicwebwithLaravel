@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'AW') }}</title>
+    <title>{{ config('app.name', 'AW-beta') }}</title>
 
     <!-- Scripts -->
 
@@ -18,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.transposer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/commentbox.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -64,6 +66,12 @@
           $('#dashboard_tbl').DataTable();
           $("#chord").transpose();
     
+
+          //comment reply button
+          $('.fa-reply').on('click', function(e){
+            alert('hi! this script is at views/layouts/ app.blade.php');
+          });
+
           //Delete Post
            $('#Post_Delete_Modal').on('shown.bs.modal', function (e) {
             var link = $(e.relatedTarget); // Button that triggered the modal

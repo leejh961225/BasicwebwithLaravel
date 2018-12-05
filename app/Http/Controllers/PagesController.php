@@ -18,4 +18,7 @@ class PagesController extends Controller
     public function getContact(){
         return view('contact');
     }
+    public function getComment(){
+        return view('posts.comment');
+    }
 }

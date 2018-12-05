@@ -44,17 +44,48 @@ class PostController extends Controller
         $search_key = $request->input('search_key');
         $search_word = $request->input('search_word');
         
-        if($search_key == 1){
-            //filter by 글제목
+        switch ($search_key) {
+            case 1:
+                 //filter by 글제목
             $posts = Post::where('title', 'LIKE','%' . $search_word . '%')
             ->orderBy('created_at','desc')
             ->paginate(5);
             //return $posts;
             return view('posts.index')->with('posts',$posts);
-        }else{
-        $posts = Post::orderBy('created_at','desc')->paginate(5);
-        return view('posts.index')->with('posts', $posts);
+
+            break;
+            
+            case 2:
+                 //filter by 글내용
+                 $posts = Post::where('body', 'LIKE','%' . $search_word . '%')
+                 ->orderBy('created_at','desc')
+                 ->paginate(5);
+                 //return $posts;
+                 return view('posts.index')->with('posts',$posts);
+
+            break;
+
+            case 3:
+                //filter by 글쓴이
+            //table users join to table posts using users.id and posts.user_id in order to get the name of user using posts.user_id
+            $posts = Post::join('users', 'users.id','=','posts.user_id')
+            //indicate the table name such as users.name not name
+            ->where('users.name', 'LIKE','%' . $search_word . '%')
+            ->orderBy('posts.created_at','desc')
+            ->paginate(5);
+            //return $posts;
+            return view('posts.index')->with('posts',$posts);
+
+            break;
+
+
+            default:
+            $posts = Post::orderBy('created_at','desc')->paginate(5);
+            return view('posts.index')->with('posts', $posts);
+
+            break;
         }
+       
     }
 
     /**
