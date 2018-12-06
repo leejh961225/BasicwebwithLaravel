@@ -39,6 +39,12 @@ Route::post('/contact/submit', 'MessageController@submit');
 Route::post('/messages/delete', 'MessageController@deleteMessage');
 Route::post('/messages/update', 'MessageController@editMessage');
 
+
+
+Route::post('/comment/store','CommentController@store');
+Route::post('/reply/store','CommentController@replyStore');
+
+
 //Route that uses url value get/post
 /*Route::get('users/{id}/{name}', function ($id, $name) {
     return 'This is user ' .$name.' with an id of '.$id;
@@ -46,6 +52,8 @@ Route::post('/messages/update', 'MessageController@editMessage');
 
 Route::get('posts/create_chord', 'PostController@create_chord');
 Route::resource('posts', 'PostController');
+
+
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');

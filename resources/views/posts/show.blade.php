@@ -17,12 +17,45 @@
     {!! $post->body !!}
   </div>
 </br> </br>
-<small>Written on {{ $post->created_at }} by {{ $post->user->name }}</small>
+<small>작성일: {{ $post->created_at }} by {{ $post->user->name }}</small>
 <hr>
 
 @if(!Auth::guest())
   @if(Auth::user()->id == $post->user_id)
-    <a href="/posts/{{ $post->id }}/edit" class="btn btn-warning">Edit</a>
+    <b>작성자 권한: </b>
+  <a href="/posts/{{ $post->id }}/edit" class="btn btn-warning">수정</a>
+ 
+  <!-- auth author checking end -->
   @endif
+  <hr>
+<!-- Shadow textarea -->
+<b><p class="font">댓글: <a href="#" class="text-warning">{{ $post->total_comments->count() }}</a>개</p></b>
+
+    <!-- Contenedor Principal -->
+      
+    <div class="comments-container">
+      <ul id="comments-list" class="comments-list">
+        <li>
+<!-- fetch comments from db -->
+
+			@include('posts._comment_replies', [ 'comments' => $post->comments, 'post_id' => $post->id ])
+ 
+</li>
+</ul>
+</div>
+
+
+{!!  Form::open(['url' =>  'comment/store' ]) !!}
+<div class="form-group shadow-textarea">
+    <label for="exampleFormControlTextarea6"></label>
+{{ Form::textarea('comment_body', '', ['id' => 'comment_body', 'class' => 'form-control z-depth-1', 'rows' => '3', 'placeholder' => '댓글 쓰기..']) }}
+{{ Form::hidden('post_id', $post->id ) }}
+  </div>
+  {{ Form::submit('등록', ['class' => 'btn btn-default']) }}
+
+{!! Form::close() !!}
+  
+  <!-- Shadow textarea -->
+<!-- auth guest checking end -->
 @endif
 @endsection

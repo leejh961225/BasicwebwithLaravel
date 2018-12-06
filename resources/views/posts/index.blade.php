@@ -49,7 +49,7 @@
                
                 
                 <h3 class="mb-0">
-                  <a class="text-dark" href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                  <a class="text-dark" href="/posts/{{ $post->id }}">{{ $post->title }}({{ $post->total_comments->count() }})</a>
                 </h3>
                 <div class="mb-1 text-muted">{{ $post->created_at }}</div>
                 <p class="card-text mb-auto"></p>

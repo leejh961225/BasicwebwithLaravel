@@ -2,7 +2,7 @@
 
 @section('content')
   <h1>Create Post</h1>
-<hr></br>
+<hr></br>                                     <!-- Enctype is file input as the browser will know how to properly format the request.  -->
   {!!  Form::open(['action' => 'PostController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
       {{ Form::label('title', 'Title') }}

@@ -4,6 +4,10 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Exception\SymfonyDisplayer;
+
+
 
 class Handler extends ExceptionHandler
 {
@@ -34,6 +38,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        
         parent::report($exception);
     }
 
@@ -46,6 +51,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        
+  /**  // custom error message
+    if ($exception instanceof \ErrorException) 
+    {
+        return response()->view('errors.500', [], 500);
+    }
+    if ($exception instanceof \ErrorException) 
+    {
+        return response()->view('errors.404', [], 404);
+    }  
+    else 
+    {
         return parent::render($request, $exception);
     }
+*/
+        return parent::render($request, $exception);
+    }
+
+    
 }
