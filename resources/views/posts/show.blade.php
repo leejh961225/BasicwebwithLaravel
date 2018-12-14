@@ -33,7 +33,7 @@
 
     <!-- Contenedor Principal -->
       
-    <div class="comments-container">
+    <div class="">
       <ul id="comments-list" class="comments-list">
         <li>
 <!-- fetch comments from db -->
@@ -48,7 +48,7 @@
 {!!  Form::open(['url' =>  'comment/store' ]) !!}
 <div class="form-group shadow-textarea">
     <label for="exampleFormControlTextarea6"></label>
-{{ Form::textarea('comment_body', '', ['id' => 'comment_body', 'class' => 'form-control z-depth-1', 'rows' => '3', 'placeholder' => '댓글 쓰기..']) }}
+{{ Form::textarea('comment_body', '', ['id' => 'comment_body', 'class' => 'form-control z-depth-1', 'rows' => '3', 'placeholder' => '댓글 쓰기..', 'required']) }}
 {{ Form::hidden('post_id', $post->id ) }}
   </div>
   {{ Form::submit('등록', ['class' => 'btn btn-default']) }}
